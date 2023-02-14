@@ -48,6 +48,7 @@ module.exports = {
         res.status(500).json(err);
       });
   },
+  //add a friend
   addFriend(req, res) {
     User.fineOneAndUpdate(
       {
@@ -64,7 +65,8 @@ module.exports = {
         res.status(500).json(err);
       });
   },
-  deleteThought(req, res) {
+  //delete a friend
+  deleteFriend(req, res) {
     User.fineOneAndUpdate(
       {
         _id: req.params.userId,
