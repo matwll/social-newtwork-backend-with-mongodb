@@ -28,6 +28,9 @@
 <!-- ![webpage screenshot](./assets/images/webpage-screenshot.png) -->
 <img src="./assets/Screenshot-social-media-api.png" width="600" text-align="center">
 
+link to walkthrough video
+https://drive.google.com/file/d/1h0LKQreDcc3ii2KKUas4_SmE6bMA4mN2/view
+
 This app contains an api and database set up for a social media application
 
 This application was built primarily utilizing the following programming languages:

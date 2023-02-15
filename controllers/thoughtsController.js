@@ -86,16 +86,11 @@ addReaction(req, res){
 deleteReaction(req, res){
   Thought.findOneAndUpdate(
     {
-      _id: req.params.reactionId,
+      _id: req.params.thoughtId,
     },
     { $pull: { reactions: req.params.reactionId } },
-    { new: true },
   )
     .then((thoughtrecords) => {
-      if(!thoughtrecords){
-        //add message about no thought record found
-        res.status(404).json()
-      }
       console.log(thoughtrecords);
       res.status(200).json(thoughtrecords);
     })
