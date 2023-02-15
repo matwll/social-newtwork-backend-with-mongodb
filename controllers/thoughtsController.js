@@ -16,7 +16,7 @@ getThoughts(req, res){
 
 getSingleThought(req, res){
   Thought.findOne({
-    _id: req.params.userId,
+    _id: req.params.thoughtId,
   })
     .then((thoughtrecords) => {
       console.log(thoughtrecords);
@@ -47,18 +47,26 @@ deleteThought(req, res){
   });
 },
 updateThought(req, res){
+  console.log(req.params.thoughtId);
+  console.log(Thought)
   Thought.fineOneAndUpdate(
     {
       _id: req.params.thoughtId,
-    }
+    },
+    {
+      $set: req.body,
+    },
+    {
+       new: true ,
+    })
     .then((thoughtrecords) => {
       console.log(thoughtrecords);
       res.status(200).json(thoughtrecords);
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json(err);
     })
-  )
 },
 addReaction(req, res){
   Thought.fineOneAndUpdate(
