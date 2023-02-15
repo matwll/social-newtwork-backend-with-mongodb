@@ -37,6 +37,27 @@ module.exports = {
         res.status(500).json(err);
       });
   },
+  //update user
+  updateUser(req, res){
+    User.findOneAndUpdate(
+      {
+        _id: req.params.userId,
+      },
+      {
+        $set: req.body,
+      },
+      {
+         new: true ,
+      })
+      .then((userrecords) => {
+        console.log(userrecords);
+        res.status(200).json(userrecords);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      })
+  },
   //delete a user
   deleteUser(req, res) {
     User.findOneAndDelete({ _id: req.params.userId })
@@ -50,7 +71,7 @@ module.exports = {
   },
   //add a friend
   addFriend(req, res) {
-    User.fineOneAndUpdate(
+    User.findOneAndUpdate(
       {
         _id: req.params.userId,
       },
@@ -67,7 +88,7 @@ module.exports = {
   },
   //delete a friend
   deleteFriend(req, res) {
-    User.fineOneAndUpdate(
+    User.findOneAndUpdate(
       {
         _id: req.params.userId,
       },

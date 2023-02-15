@@ -47,9 +47,7 @@ deleteThought(req, res){
   });
 },
 updateThought(req, res){
-  console.log(req.params.thoughtId);
-  console.log(Thought)
-  Thought.fineOneAndUpdate(
+  Thought.findOneAndUpdate(
     {
       _id: req.params.thoughtId,
     },
@@ -69,17 +67,14 @@ updateThought(req, res){
     })
 },
 addReaction(req, res){
-  Thought.fineOneAndUpdate(
+  Thought.findOneAndUpdate(
     {
       _id: req.params.thoughtId,
     },
     { $addToSet: { reactions: req.body }},
+    { new: true },
   )
     .then((thoughtrecords) => {
-      if(!thoughtrecords){
-        //add message about no thought record found
-        res.status(404).json()
-      }
       console.log(thoughtrecords);
       res.status(200).json(thoughtrecords);
     })
@@ -89,7 +84,7 @@ addReaction(req, res){
   },
 
 deleteReaction(req, res){
-  Thought.fineOneAndUpdate(
+  Thought.findOneAndUpdate(
     {
       _id: req.params.reactionId,
     },
