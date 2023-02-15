@@ -47,7 +47,7 @@ module.exports = {
         $set: req.body,
       },
       {
-         new: true ,
+         new: true,
       })
       .then((userrecords) => {
         console.log(userrecords);

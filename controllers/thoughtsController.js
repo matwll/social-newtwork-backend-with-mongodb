@@ -89,6 +89,7 @@ deleteReaction(req, res){
       _id: req.params.reactionId,
     },
     { $pull: { reactions: req.params.reactionId } },
+    { new: true },
   )
     .then((thoughtrecords) => {
       if(!thoughtrecords){
